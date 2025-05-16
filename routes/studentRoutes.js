@@ -9,5 +9,6 @@ router.get('/students', auth, StudentController.getAllStudents); // Get all stud
 router.get('/students/:id', auth, StudentController.getStudentById); // Get student by ID
 router.patch('/students/:id', auth, StudentController.updateStudent); // Update student by ID
 router.delete('/students/:id', auth, StudentController.deleteStudent); // Delete student by ID
+router.get('/students/passed', auth, StudentController.getPassedStudents); // Get all passed students
 
 module.exports = router;

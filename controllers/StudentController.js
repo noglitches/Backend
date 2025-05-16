@@ -80,6 +80,25 @@ exports.getStudentById = async (req, res) => {
     }
 };
 
+exports.getPassedStudents = async (req, res) => {
+    try {
+        // 1. Fetch all students from the database
+        // Replace with your actual database find logic
+        const students = await Student.find();
+
+        // 2. Filter students who passed (assuming average >= 50)
+        const passedStudents = students.filter(student => student.average >= 10);
+
+        // 3. Send the list of passed students in the response
+        res.status(200).json(passedStudents);
+
+    } catch (error) {
+        // Handle errors
+        console.error('Error fetching passed students:', error);
+        res.status(500).json({ message: 'Server error', error: error.message });
+    }
+};
+
 // Controller function to update a student by ID
 exports.updateStudent = async (req, res) => {
     try {
